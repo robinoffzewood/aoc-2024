@@ -17,7 +17,7 @@ pub fn part_one(input: &str) -> Option<u32> {
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    let input = String::from("do".to_owned() + input);
+    let input = "do".to_owned() + input;
     let mut acc = 0;
     for line_do in input.split("don't") {
         if let Some(do_location) = line_do.find("do") {

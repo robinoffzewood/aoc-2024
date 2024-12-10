@@ -20,7 +20,7 @@ fn parse(input: &str) -> (HashMap<u32, Vec<u32>>, Vec<Vec<u32>>) {
                 .or_insert(vec![right]);
         } else {
             let mut update = Vec::new();
-            line.split(',').into_iter().for_each(|n| {
+            line.split(',').for_each(|n| {
                 update.push(n.parse::<u32>().unwrap());
             });
             updates.push(update);
@@ -35,7 +35,7 @@ pub fn part_one(input: &str) -> Option<u32> {
     'loop_update: for update in updates {
         let mut previous_nb = Vec::new();
         for nb in &update {
-            if let Some(rule) = rules.get(&nb) {
+            if let Some(rule) = rules.get(nb) {
                 for r in rule {
                     if previous_nb.contains(r) {
                         continue 'loop_update;
@@ -56,7 +56,7 @@ pub fn part_two(input: &str) -> Option<u32> {
     'loop_update: for update in updates {
         let mut previous_nb = Vec::new();
         for nb in &update {
-            if let Some(rule) = rules.get(&nb) {
+            if let Some(rule) = rules.get(nb) {
                 for r in rule {
                     if previous_nb.contains(r) {
                         incorrect_updates.push(update);
@@ -73,7 +73,7 @@ pub fn part_two(input: &str) -> Option<u32> {
         let mut valid_rules = HashMap::new();
         for nb in &update {
             valid_rules.insert(*nb, 0);
-            if let Some(rule) = rules.get(&nb) {
+            if let Some(rule) = rules.get(nb) {
                 for r in rule {
                     if update.contains(r) {
                         valid_rules.entry(*nb).and_modify(|v| *v += 1);
