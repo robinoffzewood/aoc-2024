@@ -56,9 +56,9 @@ fn get_part_1_result(equations: &Vec<Equation>) -> (u64, Vec<Equation>) {
         let operators_list = make_operators_part_1((equation.numbers.len() - 1) as u32);
         for operators in operators_list {
             let mut acc = equation.numbers[0];
-            for i in 0..operators.len() {
+            for (i, operator) in operators.iter().enumerate() {
                 let number = equation.numbers[i + 1];
-                match operators[i] {
+                match operator {
                     Operator::Add => acc += number,
                     Operator::Multiply => acc *= number,
                     Operator::Concatenate => {}
@@ -117,9 +117,9 @@ pub fn part_two(input: &str) -> Option<u64> {
         let operators_list = make_operator_list_part_2(equation.numbers.len() - 1);
         for operators in operators_list {
             let mut acc = equation.numbers[0];
-            for i in 0..operators.len() {
+            for (i, operator) in operators.iter().enumerate() {
                 let number = equation.numbers[i + 1];
-                match operators[i] {
+                match operator {
                     Operator::Add => acc += number,
                     Operator::Multiply => acc *= number,
                     Operator::Concatenate => {

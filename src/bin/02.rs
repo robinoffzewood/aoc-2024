@@ -1,6 +1,6 @@
 advent_of_code::solution!(2);
 
-fn is_safe(line: &Vec<i32>) -> u32 {
+fn is_safe(line: &[i32]) -> u32 {
     let mut old_diff: Option<i32> = None;
     for (index, item) in line.iter().enumerate() {
         if index == line.len() - 1 {
